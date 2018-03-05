@@ -1,0 +1,30 @@
+<div> 
+  <!-- 可以用formRef来reference这个NgForm的instance。这样你可以用formRef来取这个form的值，如formRef.value -->
+  <form #formRef="ngForm">
+    <div class="form-group">
+      <label for="problemName">Problem Name</label>
+      <!-- #name="ngModel" exports NgModel into a local variable called name -->
+      <input type="text" class="form-control" id="problemName"
+       name="problemName" placeholder="Input problem name" required [(ngModel)]="newProblem.name">
+    </div>
+    <div class="form-group">
+      <label for="problemDesc">Problem Description</label>
+      <input type="text" class="form-control" id="problemDesc" name="problemDesc" 
+       placeholder="Input problem description" required [(ngModel)]="newProblem.desc">
+    </div>
+    <div class="form-group">
+      <label for="difficulty">Difficulty</label>
+      <select class="form-control" id="difficulty" name="difficulty" [(ngModel)]="newProblem.difficulty">
+        <option *ngFor="let difficulty of difficulties" [value]="difficulty">
+          {{difficulty}}
+        </option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary pull-right"
+         (click)="addProblem()">Add Problem</button>
+      </div>
+    </div>
+  </form>
+</div>
